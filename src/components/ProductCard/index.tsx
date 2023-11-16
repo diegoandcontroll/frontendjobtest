@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   CardContainer,
@@ -16,6 +16,7 @@ import { useDispatch } from "react-redux";
 import { addToCart } from "src/redux/features/cart-slice";
 import { useQuery } from "@tanstack/react-query";
 import { IProduct } from "src/types/Product";
+import { formatCurrency } from "src/utils/currency";
 
 const ProductCard: React.FC = () => {
   const dispatch = useDispatch();
@@ -33,9 +34,8 @@ const ProductCard: React.FC = () => {
       const data = await response.json();
       return data.products as IProduct[];
     },
-    staleTime: 60 * 1000 // 1 minute
+    staleTime: 60 * 1000, // 1 minute
   });
-  
 
   return (
     <>
@@ -46,10 +46,7 @@ const ProductCard: React.FC = () => {
                 <img src={product.photo} width={150} height={150}></img>
                 <CarDesc>
                   <span>{product.name}</span>
-                  <span>
-                    R$
-                    {parseFloat(product.price.toString().replace(",", ""))}
-                  </span>
+                  <span>{formatCurrency(product.price)}</span>
                 </CarDesc>
                 <p>{product.description}</p>
                 <CardButton onClick={() => dispatch(addToCart(product))}>

@@ -97,7 +97,7 @@ const SideBar: React.FC<ButtonProps> = ({ cartOpen }) => {
 
           <TotalContainer>
             <span>Total:</span>
-            <span>R${formatCurrency(cart.totalPrice)}</span>
+            <span>{formatCurrency(cart.totalPrice)}</span>
           </TotalContainer>
           <BottomButton onClick={() => {
             dispatch(toOrder())
