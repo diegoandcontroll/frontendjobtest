@@ -1,6 +1,7 @@
+import { motion } from "framer-motion";
 import styled, {css, keyframes} from "styled-components";
 
-export const CardContainer = styled.div`
+export const CardContainer = styled(motion.div)`
     width: 100%;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -16,7 +17,7 @@ export const CardContainer = styled.div`
     }
 `;
 
-export const Card = styled.div`
+export const Card = styled(motion.div)`
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -52,14 +53,14 @@ export const Card = styled.div`
     }
 `;
 
-export const CarDesc = styled.div`
+export const CarDesc = styled(motion.div)`
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
 `;
 
-export const CardButton = styled.button`
+export const CardButton = styled(motion.button)`
     padding: 0.5rem 0;
     position: absolute;
     bottom: 0;
@@ -112,7 +113,7 @@ const shimmer = css`
   }
 `;
 
-export const Skeleton = styled.div`
+export const Skeleton = styled(motion.div)`
     display: flex;
     //border: 1px solid red;
     align-items: center;
@@ -125,7 +126,7 @@ export const Skeleton = styled.div`
     position: relative;
 `;
 
-export const Box = styled.div`
+export const Box = styled(motion.div)`
   ${shimmer};
   display: flex;
   width: 150px;
@@ -134,7 +135,7 @@ export const Box = styled.div`
   border-radius: 5px;
 `;
 
-export const Text = styled.div`
+export const Text = styled(motion.div)`
   ${shimmer};
   width: 100%;
   height: 15px;

@@ -1,5 +1,5 @@
 import React, {  useState } from "react";
-
+import { motion, AnimatePresence } from "framer-motion";
 import {
   CardContainer,
   Card,
@@ -26,14 +26,16 @@ const ProductCard: React.FC = () => {
   } = useQuery({
     queryKey: ["products"],
     queryFn: async () => {
+      const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
       const response = await fetch(
-        `https://mks-frontend-challenge-04811e8151e6.herokuapp.com/api/v1/products?page=1&rows=8&sortBy=name&orderBy=DESC`
+        `${baseUrl}/products?page=1&rows=8&sortBy=name&orderBy=DESC`
       );
       const data = await response.json();
       return data.products as IProduct[];
     },
     staleTime: 60 * 1000 // 1 minute
   });
+  
 
   return (
     <>

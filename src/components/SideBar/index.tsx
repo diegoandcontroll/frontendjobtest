@@ -1,3 +1,4 @@
+'use client'
 import React, { useState, useEffect } from "react";
 
 import {
@@ -22,6 +23,7 @@ import {
   initialState,
   toOrder
 } from "src/redux/features/cart-slice";
+import { formatCurrency } from "src/utils/currency";
 
 interface ButtonProps {
   cartOpen: boolean;
@@ -95,7 +97,7 @@ const SideBar: React.FC<ButtonProps> = ({ cartOpen }) => {
 
           <TotalContainer>
             <span>Total:</span>
-            <span>R${cart.totalPrice}</span>
+            <span>R${formatCurrency(cart.totalPrice)}</span>
           </TotalContainer>
           <BottomButton onClick={() => {
             dispatch(toOrder())

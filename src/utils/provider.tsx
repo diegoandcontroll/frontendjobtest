@@ -2,7 +2,6 @@
 
 import React from "react";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import StyledComponentsRegistry from "src/lib/registry";
 
 import ProviderRedux from "src/redux/provider";
@@ -16,7 +15,6 @@ function Providers({ children }: React.PropsWithChildren) {
       <StyledComponentsRegistry>
         <ProviderRedux>
           <QueryClientProvider client={client}>
-            <ReactQueryDevtools initialIsOpen={false} />
           
           {children}
           </QueryClientProvider>
